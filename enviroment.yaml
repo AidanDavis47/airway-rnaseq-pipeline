@@ -1,0 +1,17 @@
+name: airway
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - snakemake
+  - salmon
+  - fastqc
+  - multiqc
+  - sra-tools
+  - seqtk
+  - r-base
+  - bioconductor-tximport
+  - bioconductor-deseq2
+  - r-ggplot2
+  - r-pheatmap
