@@ -1,0 +1,1 @@
+to open use ubuntu and type "code ." to get to wsl visual studio
