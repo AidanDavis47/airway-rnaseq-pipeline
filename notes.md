@@ -58,3 +58,45 @@ ENST00000361851.1       207     71.985  8721.136983     383.781
 ENST00000387400.1       73      7.356   8498.057201     38.215
 ENST00000368719.9       434     277.420 6663.663340     1130.111
 ENST00000362079.2       784     625.598 6446.937889     2465.575
+
+
+snakemake notes:
+
+an addition/variation of python
+
+runs rules that are written in a Snakefile  (no extension)
+
+Example rule:
+
+rule bwa_map:
+    input:  //inputs these files
+        "data/genome.fa",
+        "data/samples/{sample}.fastq"
+    output: //creates these file
+        "mapped_reads/{sample}.bam"
+    shell: //shell commands that are in the rule set
+        "bwa mem {input} | samtools view -Sb - > {output}"
+
+
+
+
+runs via command line
+
+can use python scripts to enhance 
+
+example:
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from pysam import VariantFile
+
+quals = [record.qual for record in VariantFile(snakemake.input[0])]
+plt.hist(quals)
+
+plt.savefig(snakemake.output[0])
+
+
+
+to make a histogram,
+
