@@ -1,0 +1,7 @@
+##config file, aka settings that can be changed later such as the sample file
+
+samples: samples.csv
+reads_per_sample: 1000000
+transcripts: ref/gencode.v48.transcripts.fa.gz ##fasta file in references
+salmon_index: ref/salmon_index ##gets the info from the salmon folder in references
+threads: 4 ## determines how many threads are being used

@@ -82,6 +82,8 @@ rule bwa_map:
 
 runs via command line
 
+conda activate "enviro name"
+
 can use python scripts to enhance 
 
 example:
