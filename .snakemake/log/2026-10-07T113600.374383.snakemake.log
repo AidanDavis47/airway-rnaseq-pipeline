@@ -1,0 +1,385 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-10-07 11:36:00
+  Workflow ID: c3bd640d-d04f-4ef4-a17b-898cebbe2475
+  Platform: Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43
+  Host: AMDDesktop
+  User: tutlo
+  Snakemake version: 9.27.0
+  Python version: 3.11.16 (main, Sep  2 2026, 23:39:52) [GCC 15.3.0]
+  Command: /home/tutlo/miniforge3/envs/airway/bin/snakemake --cores 4
+  Snakefile: /home/tutlo/airway-rnaseq-pipeline/Snakefile
+  Base directory: /home/tutlo/airway-rnaseq-pipeline
+  Run directory: /home/tutlo/airway-rnaseq-pipeline
+  Working directory: /home/tutlo/airway-rnaseq-pipeline
+  Config file(s): ['config.yaml']
+  Config MD5: eccbd30f616956fa5c2aaec7be69fb40
+
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+download            6
+fastqc             12
+salmon_quant        6
+multiqc             1
+all                 1
+total              26
+
+Select jobs to execute...
+Execute 4 jobs...
+[Wed Oct  7 11:36:00 2026]
+localrule download:
+    output: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz
+    log: logs/downloads/SRR1039521.log
+    jobid: 17
+    reason: Missing output files: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz; Code has changed since last execution
+    wildcards: s=SRR1039521
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:36:00 2026]
+localrule download:
+    output: data/SRR1039512_1.fastq.gz, data/SRR1039512_2.fastq.gz
+    log: logs/downloads/SRR1039512.log
+    jobid: 7
+    reason: Missing output files: data/SRR1039512_2.fastq.gz, data/SRR1039512_1.fastq.gz; Code has changed since last execution
+    wildcards: s=SRR1039512
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:36:00 2026]
+localrule download:
+    output: data/SRR1039520_1.fastq.gz, data/SRR1039520_2.fastq.gz
+    log: logs/downloads/SRR1039520.log
+    jobid: 15
+    reason: Missing output files: data/SRR1039520_2.fastq.gz, data/SRR1039520_1.fastq.gz; Code has changed since last execution
+    wildcards: s=SRR1039520
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:36:00 2026]
+localrule download:
+    output: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz
+    log: logs/downloads/SRR1039516.log
+    jobid: 11
+    reason: Missing output files: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz; Code has changed since last execution
+    wildcards: s=SRR1039516
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:36:50 2026]
+Finished jobid: 7 (Rule: download)
+1 of 26 steps (4%) done
+Execute 1 jobs...
+[Wed Oct  7 11:36:50 2026]
+localrule download:
+    output: data/SRR1039517_1.fastq.gz, data/SRR1039517_2.fastq.gz
+    log: logs/downloads/SRR1039517.log
+    jobid: 13
+    reason: Missing output files: data/SRR1039517_1.fastq.gz, data/SRR1039517_2.fastq.gz
+    wildcards: s=SRR1039517
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:37:06 2026]
+Finished jobid: 11 (Rule: download)
+2 of 26 steps (8%) done
+Execute 1 jobs...
+[Wed Oct  7 11:37:06 2026]
+localrule fastqc:
+    input: data/SRR1039516_2.fastq.gz
+    output: results/fastqc/SRR1039516_2_fastqc.html, results/fastqc/SRR1039516_2_fastqc.zip
+    log: logs/fastqc/SRR1039516_2.log
+    jobid: 28
+    reason: Missing output files: results/fastqc/SRR1039516_2_fastqc.zip; Input files updated by another job: data/SRR1039516_2.fastq.gz
+    wildcards: s=SRR1039516, r=2
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:37:07 2026]
+Finished jobid: 15 (Rule: download)
+3 of 26 steps (12%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:37:07 2026]
+localrule download:
+    output: data/SRR1039513_1.fastq.gz, data/SRR1039513_2.fastq.gz
+    log: logs/downloads/SRR1039513.log
+    jobid: 9
+    reason: Missing output files: data/SRR1039513_2.fastq.gz, data/SRR1039513_1.fastq.gz
+    wildcards: s=SRR1039513
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:37:07 2026]
+Finished jobid: 17 (Rule: download)
+4 of 26 steps (15%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:37:07 2026]
+localrule fastqc:
+    input: data/SRR1039521_1.fastq.gz
+    output: results/fastqc/SRR1039521_1_fastqc.html, results/fastqc/SRR1039521_1_fastqc.zip
+    log: logs/fastqc/SRR1039521_1.log
+    jobid: 33
+    reason: Missing output files: results/fastqc/SRR1039521_1_fastqc.zip; Input files updated by another job: data/SRR1039521_1.fastq.gz
+    wildcards: s=SRR1039521, r=1
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:37:13 2026]
+Finished jobid: 33 (Rule: fastqc)
+5 of 26 steps (19%) done
+Execute 1 jobs...
+[Wed Oct  7 11:37:13 2026]
+localrule fastqc:
+    input: data/SRR1039512_2.fastq.gz
+    output: results/fastqc/SRR1039512_2_fastqc.html, results/fastqc/SRR1039512_2_fastqc.zip
+    log: logs/fastqc/SRR1039512_2.log
+    jobid: 24
+    reason: Missing output files: results/fastqc/SRR1039512_2_fastqc.zip; Input files updated by another job: data/SRR1039512_2.fastq.gz
+    wildcards: s=SRR1039512, r=2
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:37:13 2026]
+Finished jobid: 28 (Rule: fastqc)
+6 of 26 steps (23%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:37:13 2026]
+localrule fastqc:
+    input: data/SRR1039520_1.fastq.gz
+    output: results/fastqc/SRR1039520_1_fastqc.html, results/fastqc/SRR1039520_1_fastqc.zip
+    log: logs/fastqc/SRR1039520_1.log
+    jobid: 31
+    reason: Missing output files: results/fastqc/SRR1039520_1_fastqc.zip; Input files updated by another job: data/SRR1039520_1.fastq.gz
+    wildcards: s=SRR1039520, r=1
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:37:17 2026]
+Finished jobid: 24 (Rule: fastqc)
+7 of 26 steps (27%) done
+Execute 1 jobs...
+[Wed Oct  7 11:37:17 2026]
+localrule fastqc:
+    input: data/SRR1039516_1.fastq.gz
+    output: results/fastqc/SRR1039516_1_fastqc.html, results/fastqc/SRR1039516_1_fastqc.zip
+    log: logs/fastqc/SRR1039516_1.log
+    jobid: 27
+    reason: Missing output files: results/fastqc/SRR1039516_1_fastqc.zip; Input files updated by another job: data/SRR1039516_1.fastq.gz
+    wildcards: s=SRR1039516, r=1
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:37:17 2026]
+Finished jobid: 31 (Rule: fastqc)
+8 of 26 steps (31%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:37:17 2026]
+localrule fastqc:
+    input: data/SRR1039521_2.fastq.gz
+    output: results/fastqc/SRR1039521_2_fastqc.html, results/fastqc/SRR1039521_2_fastqc.zip
+    log: logs/fastqc/SRR1039521_2.log
+    jobid: 34
+    reason: Missing output files: results/fastqc/SRR1039521_2_fastqc.zip; Input files updated by another job: data/SRR1039521_2.fastq.gz
+    wildcards: s=SRR1039521, r=2
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:37:21 2026]
+Finished jobid: 27 (Rule: fastqc)
+9 of 26 steps (35%) done
+Execute 1 jobs...
+[Wed Oct  7 11:37:21 2026]
+localrule fastqc:
+    input: data/SRR1039512_1.fastq.gz
+    output: results/fastqc/SRR1039512_1_fastqc.html, results/fastqc/SRR1039512_1_fastqc.zip
+    log: logs/fastqc/SRR1039512_1.log
+    jobid: 23
+    reason: Missing output files: results/fastqc/SRR1039512_1_fastqc.zip; Input files updated by another job: data/SRR1039512_1.fastq.gz
+    wildcards: s=SRR1039512, r=1
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:37:21 2026]
+Finished jobid: 34 (Rule: fastqc)
+10 of 26 steps (38%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:37:21 2026]
+localrule fastqc:
+    input: data/SRR1039520_2.fastq.gz
+    output: results/fastqc/SRR1039520_2_fastqc.html, results/fastqc/SRR1039520_2_fastqc.zip
+    log: logs/fastqc/SRR1039520_2.log
+    jobid: 32
+    reason: Missing output files: results/fastqc/SRR1039520_2_fastqc.zip; Input files updated by another job: data/SRR1039520_2.fastq.gz
+    wildcards: s=SRR1039520, r=2
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:37:25 2026]
+Finished jobid: 23 (Rule: fastqc)
+11 of 26 steps (42%) done
+[Wed Oct  7 11:37:25 2026]
+Finished jobid: 32 (Rule: fastqc)
+12 of 26 steps (46%) done
+[Wed Oct  7 11:37:39 2026]
+Finished jobid: 13 (Rule: download)
+13 of 26 steps (50%) done
+Execute 2 jobs...
+[Wed Oct  7 11:37:39 2026]
+localrule fastqc:
+    input: data/SRR1039517_1.fastq.gz
+    output: results/fastqc/SRR1039517_1_fastqc.html, results/fastqc/SRR1039517_1_fastqc.zip
+    log: logs/fastqc/SRR1039517_1.log
+    jobid: 29
+    reason: Missing output files: results/fastqc/SRR1039517_1_fastqc.zip; Input files updated by another job: data/SRR1039517_1.fastq.gz
+    wildcards: s=SRR1039517, r=1
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:37:39 2026]
+localrule fastqc:
+    input: data/SRR1039517_2.fastq.gz
+    output: results/fastqc/SRR1039517_2_fastqc.html, results/fastqc/SRR1039517_2_fastqc.zip
+    log: logs/fastqc/SRR1039517_2.log
+    jobid: 30
+    reason: Missing output files: results/fastqc/SRR1039517_2_fastqc.zip; Input files updated by another job: data/SRR1039517_2.fastq.gz
+    wildcards: s=SRR1039517, r=2
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:37:43 2026]
+Finished jobid: 30 (Rule: fastqc)
+14 of 26 steps (54%) done
+[Wed Oct  7 11:37:43 2026]
+Finished jobid: 29 (Rule: fastqc)
+15 of 26 steps (58%) done
+[Wed Oct  7 11:38:14 2026]
+Finished jobid: 9 (Rule: download)
+16 of 26 steps (62%) done
+Execute 1 jobs...
+[Wed Oct  7 11:38:14 2026]
+localrule salmon_quant:
+    input: data/SRR1039517_1.fastq.gz, data/SRR1039517_2.fastq.gz, ref/salmon_index
+    output: results/salmon/SRR1039517/quant.sf
+    log: logs/salmon/SRR1039517.log
+    jobid: 12
+    reason: Missing output files: results/salmon/SRR1039517/quant.sf; Input files updated by another job: data/SRR1039517_1.fastq.gz, data/SRR1039517_2.fastq.gz
+    wildcards: s=SRR1039517
+    threads: 4
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:38:21 2026]
+Finished jobid: 12 (Rule: salmon_quant)
+17 of 26 steps (65%) done
+Execute 1 jobs...
+[Wed Oct  7 11:38:21 2026]
+localrule salmon_quant:
+    input: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz, ref/salmon_index
+    output: results/salmon/SRR1039516/quant.sf
+    log: logs/salmon/SRR1039516.log
+    jobid: 10
+    reason: Missing output files: results/salmon/SRR1039516/quant.sf; Input files updated by another job: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz
+    wildcards: s=SRR1039516
+    threads: 4
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:38:28 2026]
+Finished jobid: 10 (Rule: salmon_quant)
+18 of 26 steps (69%) done
+Execute 1 jobs...
+[Wed Oct  7 11:38:28 2026]
+localrule salmon_quant:
+    input: data/SRR1039520_1.fastq.gz, data/SRR1039520_2.fastq.gz, ref/salmon_index
+    output: results/salmon/SRR1039520/quant.sf
+    log: logs/salmon/SRR1039520.log
+    jobid: 14
+    reason: Missing output files: results/salmon/SRR1039520/quant.sf; Input files updated by another job: data/SRR1039520_2.fastq.gz, data/SRR1039520_1.fastq.gz
+    wildcards: s=SRR1039520
+    threads: 4
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:38:34 2026]
+Finished jobid: 14 (Rule: salmon_quant)
+19 of 26 steps (73%) done
+Execute 1 jobs...
+[Wed Oct  7 11:38:34 2026]
+localrule salmon_quant:
+    input: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz, ref/salmon_index
+    output: results/salmon/SRR1039521/quant.sf
+    log: logs/salmon/SRR1039521.log
+    jobid: 16
+    reason: Missing output files: results/salmon/SRR1039521/quant.sf; Input files updated by another job: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz
+    wildcards: s=SRR1039521
+    threads: 4
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:38:41 2026]
+Finished jobid: 16 (Rule: salmon_quant)
+20 of 26 steps (77%) done
+Execute 1 jobs...
+[Wed Oct  7 11:38:41 2026]
+localrule salmon_quant:
+    input: data/SRR1039512_1.fastq.gz, data/SRR1039512_2.fastq.gz, ref/salmon_index
+    output: results/salmon/SRR1039512/quant.sf
+    log: logs/salmon/SRR1039512.log
+    jobid: 6
+    reason: Missing output files: results/salmon/SRR1039512/quant.sf; Input files updated by another job: data/SRR1039512_2.fastq.gz, data/SRR1039512_1.fastq.gz
+    wildcards: s=SRR1039512
+    threads: 4
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:38:48 2026]
+Finished jobid: 6 (Rule: salmon_quant)
+21 of 26 steps (81%) done
+Execute 1 jobs...
+[Wed Oct  7 11:38:48 2026]
+localrule salmon_quant:
+    input: data/SRR1039513_1.fastq.gz, data/SRR1039513_2.fastq.gz, ref/salmon_index
+    output: results/salmon/SRR1039513/quant.sf
+    log: logs/salmon/SRR1039513.log
+    jobid: 8
+    reason: Missing output files: results/salmon/SRR1039513/quant.sf; Input files updated by another job: data/SRR1039513_2.fastq.gz, data/SRR1039513_1.fastq.gz
+    wildcards: s=SRR1039513
+    threads: 4
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Wed Oct  7 11:38:55 2026]
+Finished jobid: 8 (Rule: salmon_quant)
+22 of 26 steps (85%) done
+Execute 2 jobs...
+[Wed Oct  7 11:38:55 2026]
+localrule fastqc:
+    input: data/SRR1039513_1.fastq.gz
+    output: results/fastqc/SRR1039513_1_fastqc.html, results/fastqc/SRR1039513_1_fastqc.zip
+    log: logs/fastqc/SRR1039513_1.log
+    jobid: 25
+    reason: Missing output files: results/fastqc/SRR1039513_1_fastqc.zip; Input files updated by another job: data/SRR1039513_1.fastq.gz
+    wildcards: s=SRR1039513, r=1
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:38:55 2026]
+localrule fastqc:
+    input: data/SRR1039513_2.fastq.gz
+    output: results/fastqc/SRR1039513_2_fastqc.html, results/fastqc/SRR1039513_2_fastqc.zip
+    log: logs/fastqc/SRR1039513_2.log
+    jobid: 26
+    reason: Missing output files: results/fastqc/SRR1039513_2_fastqc.zip; Input files updated by another job: data/SRR1039513_2.fastq.gz
+    wildcards: s=SRR1039513, r=2
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:38:59 2026]
+Finished jobid: 26 (Rule: fastqc)
+23 of 26 steps (88%) done
+[Wed Oct  7 11:38:59 2026]
+Finished jobid: 25 (Rule: fastqc)
+24 of 26 steps (92%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:38:59 2026]
+localrule multiqc:
+    input: results/fastqc/SRR1039508_1_fastqc.zip, results/fastqc/SRR1039508_2_fastqc.zip, results/fastqc/SRR1039509_1_fastqc.zip, results/fastqc/SRR1039509_2_fastqc.zip, results/fastqc/SRR1039512_1_fastqc.zip, results/fastqc/SRR1039512_2_fastqc.zip, results/fastqc/SRR1039513_1_fastqc.zip, results/fastqc/SRR1039513_2_fastqc.zip, results/fastqc/SRR1039516_1_fastqc.zip, results/fastqc/SRR1039516_2_fastqc.zip, results/fastqc/SRR1039517_1_fastqc.zip, results/fastqc/SRR1039517_2_fastqc.zip, results/fastqc/SRR1039520_1_fastqc.zip, results/fastqc/SRR1039520_2_fastqc.zip, results/fastqc/SRR1039521_1_fastqc.zip, results/fastqc/SRR1039521_2_fastqc.zip, results/salmon/SRR1039508/quant.sf, results/salmon/SRR1039509/quant.sf, results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039516/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf
+    output: results/multiqc/multiqc_report.html
+    log: logs/multiqc.log
+    jobid: 18
+    reason: Missing output files: results/multiqc/multiqc_report.html; Input files updated by another job: results/fastqc/SRR1039516_2_fastqc.zip, results/fastqc/SRR1039513_1_fastqc.zip, results/salmon/SRR1039512/quant.sf, results/fastqc/SRR1039512_2_fastqc.zip, results/salmon/SRR1039520/quant.sf, results/fastqc/SRR1039517_1_fastqc.zip, results/fastqc/SRR1039512_1_fastqc.zip, results/fastqc/SRR1039513_2_fastqc.zip, results/salmon/SRR1039517/quant.sf, results/fastqc/SRR1039517_2_fastqc.zip, results/salmon/SRR1039516/quant.sf, results/fastqc/SRR1039516_1_fastqc.zip, results/fastqc/SRR1039520_2_fastqc.zip, results/salmon/SRR1039521/quant.sf, results/fastqc/SRR1039520_1_fastqc.zip, results/salmon/SRR1039513/quant.sf, results/fastqc/SRR1039521_1_fastqc.zip, results/fastqc/SRR1039521_2_fastqc.zip
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:39:02 2026]
+Finished jobid: 18 (Rule: multiqc)
+25 of 26 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct  7 11:39:02 2026]
+localrule all:
+    input: results/salmon/SRR1039508/quant.sf, results/salmon/SRR1039509/quant.sf, results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039516/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf, results/multiqc/multiqc_report.html
+    jobid: 0
+    reason: Input files updated by another job: results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf, results/multiqc/multiqc_report.html, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039516/quant.sf
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:39:02 2026]
+Finished jobid: 0 (Rule: all)
+26 of 26 steps (100%) done
+Complete log(s): /home/tutlo/airway-rnaseq-pipeline/.snakemake/log/2026-10-07T113600.374383.snakemake.log
+Elapsed time: 0:03:01.803400

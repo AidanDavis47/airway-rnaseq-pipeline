@@ -82,7 +82,12 @@ rule bwa_map:
 
 runs via command line
 
-conda activate "enviro name"
+activate enviro:  conda activate "enviro name"
+
+dry run: snakemake -n
+wet run: snake make --cores 4  ##the 4 is number of cores can change this number to increase or decrease
+
+
 
 can use python scripts to enhance 
 

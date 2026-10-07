@@ -1,0 +1,122 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-10-07 11:34:58
+  Workflow ID: 5fa8a222-50f2-4172-adc7-d81cd397a768
+  Platform: Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43
+  Host: AMDDesktop
+  User: tutlo
+  Snakemake version: 9.27.0
+  Python version: 3.11.16 (main, Sep  2 2026, 23:39:52) [GCC 15.3.0]
+  Command: /home/tutlo/miniforge3/envs/airway/bin/snakemake --cores 4
+  Snakefile: /home/tutlo/airway-rnaseq-pipeline/Snakefile
+  Base directory: /home/tutlo/airway-rnaseq-pipeline
+  Run directory: /home/tutlo/airway-rnaseq-pipeline
+  Working directory: /home/tutlo/airway-rnaseq-pipeline
+  Config file(s): ['config.yaml']
+  Config MD5: eccbd30f616956fa5c2aaec7be69fb40
+
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+download            6
+fastqc             12
+salmon_quant        6
+multiqc             1
+all                 1
+total              26
+
+Select jobs to execute...
+Execute 4 jobs...
+[Wed Oct  7 11:34:58 2026]
+localrule download:
+    output: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz
+    log: logs/downloads/SRR1039521.log
+    jobid: 17
+    reason: Missing output files: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz
+    wildcards: s=SRR1039521
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:34:58 2026]
+localrule download:
+    output: data/SRR1039512_1.fastq.gz, data/SRR1039512_2.fastq.gz
+    log: logs/downloads/SRR1039512.log
+    jobid: 7
+    reason: Missing output files: data/SRR1039512_2.fastq.gz, data/SRR1039512_1.fastq.gz
+    wildcards: s=SRR1039512
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:34:58 2026]
+localrule download:
+    output: data/SRR1039520_1.fastq.gz, data/SRR1039520_2.fastq.gz
+    log: logs/downloads/SRR1039520.log
+    jobid: 15
+    reason: Missing output files: data/SRR1039520_1.fastq.gz, data/SRR1039520_2.fastq.gz
+    wildcards: s=SRR1039520
+    resources: tmpdir=/tmp
+[Wed Oct  7 11:34:58 2026]
+localrule download:
+    output: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz
+    log: logs/downloads/SRR1039516.log
+    jobid: 11
+    reason: Missing output files: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz
+    wildcards: s=SRR1039516
+    resources: tmpdir=/tmp
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/home/tutlo/airway-rnaseq-pipeline/Snakefile", line 37:
+Command 'set -euo pipefail;  fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039516 &> logs/downloads/SRR1039516.log' returned non-zero exit status 1.
+[Wed Oct  7 11:35:00 2026]
+Error in rule download:
+    message: None
+    jobid: 11
+    output: data/SRR1039516_1.fastq.gz, data/SRR1039516_2.fastq.gz
+    log: logs/downloads/SRR1039516.log (check log file(s) for error details)
+    shell:
+        fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039516 &> logs/downloads/SRR1039516.log
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/home/tutlo/airway-rnaseq-pipeline/Snakefile", line 37:
+Command 'set -euo pipefail;  fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039520 &> logs/downloads/SRR1039520.log' returned non-zero exit status 1.
+[Wed Oct  7 11:35:00 2026]
+Error in rule download:
+    message: None
+    jobid: 15
+    output: data/SRR1039520_1.fastq.gz, data/SRR1039520_2.fastq.gz
+    log: logs/downloads/SRR1039520.log (check log file(s) for error details)
+    shell:
+        fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039520 &> logs/downloads/SRR1039520.log
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/home/tutlo/airway-rnaseq-pipeline/Snakefile", line 37:
+Command 'set -euo pipefail;  fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039512 &> logs/downloads/SRR1039512.log' returned non-zero exit status 1.
+[Wed Oct  7 11:35:00 2026]
+Error in rule download:
+    message: None
+    jobid: 7
+    output: data/SRR1039512_1.fastq.gz, data/SRR1039512_2.fastq.gz
+    log: logs/downloads/SRR1039512.log (check log file(s) for error details)
+    shell:
+        fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039512 &> logs/downloads/SRR1039512.log
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/home/tutlo/airway-rnaseq-pipeline/Snakefile", line 37:
+Command 'set -euo pipefail;  fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039521 &> logs/downloads/SRR1039521.log' returned non-zero exit status 1.
+[Wed Oct  7 11:35:00 2026]
+Error in rule download:
+    message: None
+    jobid: 17
+    output: data/SRR1039521_1.fastq.gz, data/SRR1039521_2.fastq.gz
+    log: logs/downloads/SRR1039521.log (check log file(s) for error details)
+    shell:
+        fastq-dump -X 1000000 --split-files --ggzip -O data SRR1039521 &> logs/downloads/SRR1039521.log
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error messages
+Complete log(s): /home/tutlo/airway-rnaseq-pipeline/.snakemake/log/2026-10-07T113458.576042.snakemake.log
+Elapsed time: 0:00:01.736408
+WorkflowError:
+At least one job did not complete successfully.
