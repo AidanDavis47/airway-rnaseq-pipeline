@@ -105,5 +105,8 @@ plt.savefig(snakemake.output[0])
 
 
 
-to make a histogram,
 
+week 2  results
+133.558043020709,2.56354574967766,0.260931431355489,9.824595436282,8.82275654820046e-23,3.48823932579378e-20,"ENSG00000103196.12","CRISPLD2"
+
+this matches the studies results (“RNA-Seq Transcriptome Profiling Identifies CRISPLD2 as a Glucocorticoid Responsive Gene that Modulates Cytokine Function in Airway Smooth Muscle Cells,” published in PLoS ONE in 2014 (DOI: 10.1371/journal.pone.0099625).)

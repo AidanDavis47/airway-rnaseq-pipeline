@@ -23,7 +23,9 @@ wildcard_constraints:
 rule all:
     input:
         expand("results/salmon/{s}/quant.sf", s=SAMPLES),
-        "results/multiqc/multiqc_report.html"
+        "results/multiqc/multiqc_report.html", ##we want the reports file
+        "results/deseq2/deseq2_results.csv" ## the results csv from the deseq2 rule on line 95
+        
         
 #downloads the reads       
 rule download:
@@ -78,3 +80,25 @@ rule multiqc:
     log: "logs/multiqc.log" #create log
     shell: #run the shell command
         "multiqc results/fastqc results/salmon -o results/multiqc --force &> {log}"
+
+##rule that gets the head lines in the gencode file and then stores those in a csv
+rule tx2gene:
+    input: config["transcripts"] ##gets the transcripts
+    output: "ref/tx2gene.csv" #this will be the csv file that stores the headers
+    shell: ##command that will be ran by snakemake, might be a typo in there
+        """
+        zcat {input} | grep '^>' | sed 's/^>//' \
+         | awk -F'|' 'BEGIN {{OFS=","; print "tx","gene","symbol"}} {{print $1,$2,$6}}' > {output}
+         """
+
+##rule that determines how dexmethasone affects the genes (turns on or off)
+rule deseq2:
+    input:
+        samples = config["samples"], ##gets the samples
+        tx2gene = "ref/tx2gene.csv", ##gets the csv file made by the tx2gene rule
+        quants = expand("results/salmon/{s}/quant.sf", s=SAMPLES) ##gets the quant files
+    output:
+        results = "results/deseq2/deseq2_results.csv", ##creates output file that is a csv called deseq2_results
+        dds = "results/deseq2/dds.rds" ##deseq2 object
+    log: "logs/deseq2.log" ##create a log
+    script: "scripts/deseq2.R" ##will run this r file, turns out this must be an uppercase r to run

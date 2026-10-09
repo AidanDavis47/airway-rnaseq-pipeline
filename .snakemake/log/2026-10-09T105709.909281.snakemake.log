@@ -1,0 +1,56 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-10-09 10:57:09
+  Workflow ID: 3064e211-612b-4ade-ad0c-83a837cca8b1
+  Platform: Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43
+  Host: AMDDesktop
+  User: tutlo
+  Snakemake version: 9.27.0
+  Python version: 3.11.16 (main, Sep  2 2026, 23:39:52) [GCC 15.3.0]
+  Command: /home/tutlo/miniforge3/envs/airway/bin/snakemake --cores 4
+  Snakefile: /home/tutlo/airway-rnaseq-pipeline/Snakefile
+  Base directory: /home/tutlo/airway-rnaseq-pipeline
+  Run directory: /home/tutlo/airway-rnaseq-pipeline
+  Working directory: /home/tutlo/airway-rnaseq-pipeline
+  Config file(s): ['config.yaml']
+  Config MD5: 011d7fa30b705bc404a82acb1e538578
+
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+deseq2        1
+all           1
+total         2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Oct  9 10:57:10 2026]
+localrule deseq2:
+    input: samples.csv, ref/tx2gene.csv, results/salmon/SRR1039508/quant.sf, results/salmon/SRR1039509/quant.sf, results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039516/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf
+    output: results/deseq2/deseq2_results.csv, results/deseq2/dds.rds
+    log: logs/deseq2.log
+    jobid: 35
+    reason: Missing output files: results/deseq2/deseq2_results.csv
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/home/tutlo/airway-rnaseq-pipeline/Snakefile", line 104:
+Command 'set -euo pipefail;  Rscript --vanilla /home/tutlo/airway-rnaseq-pipeline/.snakemake/scripts/tmpn4vj8504.deseq2.R' returned non-zero exit status 1.
+[Fri Oct  9 10:57:14 2026]
+Error in rule deseq2:
+    message: None
+    jobid: 35
+    input: samples.csv, ref/tx2gene.csv, results/salmon/SRR1039508/quant.sf, results/salmon/SRR1039509/quant.sf, results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039516/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf
+    output: results/deseq2/deseq2_results.csv, results/deseq2/dds.rds
+    log: logs/deseq2.log (check log file(s) for error details)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error messages
+Complete log(s): /home/tutlo/airway-rnaseq-pipeline/.snakemake/log/2026-10-09T105709.909281.snakemake.log
+Elapsed time: 0:00:04.184640
+WorkflowError:
+At least one job did not complete successfully.

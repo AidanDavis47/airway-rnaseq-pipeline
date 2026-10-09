@@ -1,0 +1,56 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-10-09 10:59:25
+  Workflow ID: 486209e8-d9ac-4dce-9a55-5c98b21f86cf
+  Platform: Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43
+  Host: AMDDesktop
+  User: tutlo
+  Snakemake version: 9.27.0
+  Python version: 3.11.16 (main, Sep  2 2026, 23:39:52) [GCC 15.3.0]
+  Command: /home/tutlo/miniforge3/envs/airway/bin/snakemake --cores 4
+  Snakefile: /home/tutlo/airway-rnaseq-pipeline/Snakefile
+  Base directory: /home/tutlo/airway-rnaseq-pipeline
+  Run directory: /home/tutlo/airway-rnaseq-pipeline
+  Working directory: /home/tutlo/airway-rnaseq-pipeline
+  Config file(s): ['config.yaml']
+  Config MD5: 011d7fa30b705bc404a82acb1e538578
+
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+deseq2        1
+all           1
+total         2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Oct  9 10:59:25 2026]
+localrule deseq2:
+    input: samples.csv, ref/tx2gene.csv, results/salmon/SRR1039508/quant.sf, results/salmon/SRR1039509/quant.sf, results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039516/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf
+    output: results/deseq2/deseq2_results.csv, results/deseq2/dds.rds
+    log: logs/deseq2.log
+    jobid: 35
+    reason: Missing output files: results/deseq2/deseq2_results.csv
+    resources: tmpdir=/tmp
+[Fri Oct  9 10:59:37 2026]
+Finished jobid: 35 (Rule: deseq2)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Oct  9 10:59:37 2026]
+localrule all:
+    input: results/salmon/SRR1039508/quant.sf, results/salmon/SRR1039509/quant.sf, results/salmon/SRR1039512/quant.sf, results/salmon/SRR1039513/quant.sf, results/salmon/SRR1039516/quant.sf, results/salmon/SRR1039517/quant.sf, results/salmon/SRR1039520/quant.sf, results/salmon/SRR1039521/quant.sf, results/multiqc/multiqc_report.html, results/deseq2/deseq2_results.csv
+    jobid: 0
+    reason: Input files updated by another job: results/deseq2/deseq2_results.csv
+    resources: tmpdir=/tmp
+[Fri Oct  9 10:59:37 2026]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /home/tutlo/airway-rnaseq-pipeline/.snakemake/log/2026-10-09T105925.323937.snakemake.log
+Elapsed time: 0:00:12.616703
