@@ -51,7 +51,7 @@ with gzip.open("ref/gencode.v48.transcripts.fa.gz", "rt") as fin, gzip.open(fast
 subprocess.run(["salmon", "index", "-t", str(fasta_out), "-i", str(temp / "idx"), "--gencode"], check=True) ##runs a command that builds a salmon index 
 for s in samples:
     sam = temp / f"{s}.sam"
-    subprocess.run(["salmon", "quant", "-i", str(temp / "idx"), "-1", "A", ##runs a commnad that does a salmon quant
+    subprocess.run(["salmon", "quant", "-i", str(temp / "idx"), "-l", "A", ##runs a commnad that does a salmon quant
                     "-1", f"data/{s}_1.fastq.gz", "-2", f"data/{s}_2.fastq.gz",
                     "-p", "4", "-o", str(temp / s), f"--writeMappings={sam}"], check=True) 
     with open(sam) as f:
@@ -62,5 +62,26 @@ for s in samples:
         reads = subprocess.run(["seqtk", "subseq", f"data/{s}_{r}.fastq.gz", str(temp /f"{s}.txt")], check=True, capture_output=True).stdout ##another command that will run seqtk and set reads to it
         with gzip.open(out / "data" / f"{s}_{r}.fastq.gz", "wb") as fo: ## save the reads in a fastq file
             fo.write(reads)
+    print(f"{s}: kept {len(names)} read pairs")
     
+
+## now just configure for the test run
+
+with open(out / "samples.csv", "w") as f:
+    f.write("sample,donor,treatment\n")
+    for s, (donor, treatment) in samples.items():
+        f.write(f"{s},{donor},{treatment}\n")
+
+(out / "config.yaml").write_text("""samples: sample.csv
+reads_per_sample: 1000000
+transcripts: ref/transcripts.fa.gz
+salmon_index: ref/salmon_index
+threads: 2
+min_counts: 10
+min_samples: 2
+""")
+
+shutil.rmtree(temp) ## clean up unimportant files
+
+print("Test data should now be in tests/data")
 

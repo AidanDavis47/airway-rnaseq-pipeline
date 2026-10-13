@@ -1,0 +1,7 @@
+samples: sample.csv
+reads_per_sample: 1000000
+transcripts: ref/transcripts.fa.gz
+salmon_index: ref/salmon_index
+threads: 2
+min_counts: 10
+min_samples: 2
