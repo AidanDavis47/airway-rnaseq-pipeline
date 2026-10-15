@@ -13,7 +13,7 @@ must_genes = {"FKBP5", "TSC22D3", "PER1", "CRISPLD2", "DUSP1"} # these are the g
 samples = { #samples that we will be pulling the genes from
     "SRR1039508": ("N61311", "untreated"),
     "SRR1039509": ("N61311", "dexamethasone"),
-    "SRR1039512": ("N052611", "unteated"),
+    "SRR1039512": ("N052611", "untreated"),
     "SRR1039513": ("N052611", "dexamethasone")
 }
 
@@ -72,7 +72,7 @@ with open(out / "samples.csv", "w") as f:
     for s, (donor, treatment) in samples.items():
         f.write(f"{s},{donor},{treatment}\n")
 
-(out / "config.yaml").write_text("""samples: sample.csv
+(out / "config.yaml").write_text("""samples: samples.csv
 reads_per_sample: 1000000
 transcripts: ref/transcripts.fa.gz
 salmon_index: ref/salmon_index

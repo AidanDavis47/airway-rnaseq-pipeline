@@ -100,5 +100,8 @@ rule deseq2:
     output:
         results = "results/deseq2/deseq2_results.csv", ##creates output file that is a csv called deseq2_results
         dds = "results/deseq2/dds.rds" ##deseq2 object
+    params:
+        min_counts = config["min_counts"], ##minimum amount of reads that are needed, gets it from the config file
+        min_samples = config["min_samples"] ##minimum amount of samples that are needed, gets it from the config file, added these during the testing phase
     log: "logs/deseq2.log" ##create a log
     script: "scripts/deseq2.R" ##will run this r file, turns out this must be an uppercase r to run

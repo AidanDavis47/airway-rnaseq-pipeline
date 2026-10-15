@@ -29,7 +29,8 @@ txi <- tximport(files, type = "salmon", tx2gene = tx2gene[, c("tx", "gene")])
 dds <- DESeqDataSetFromTximport(txi, colData = samples, design = ~ donor + treatment)
 
 ## filter genes, get rid of ones that have very little reads and keep ones with reads >= 10 in 4 samples
-dds <- dds[rowSums(counts(dds) >= 10) >= 4,]
+keep <- rowSums(counts(dds) >= snakemake@params[["min_counts"]]) >= snakemake@params[["min_samples"]] ##had to change this so that the tests worked since the min samples for test is 2 instead of 4
+dds <- dds[keep, ]
 
 #Runs test comparing dexamethasone vs untreated donors
 dds <- DESeq(dds)
