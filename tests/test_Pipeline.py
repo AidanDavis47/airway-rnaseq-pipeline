@@ -13,7 +13,7 @@ REPO = Path(__file__).resolve().parents[1] #find the project folder
 def run_pipeline(tmp_path_factory):
     d = tmp_path_factory.mktemp("pipeline")
     shutil.copytree(REPO / "tests" / "data", d, dirs_exist_ok=True)
-    subprocess.run(["snakemake", "-s", str(REPO/"Snakefile"), "--configfile", "config.yaml", "--cores", "2"], cwd=d, check=True) ## this is what actually tells the pipeline to run
+    subprocess.run(["snakemake", "-s", str(REPO/"Snakefile"), "--configfile", "config.yaml", "--cores", "2", "--show-failed-logs"], cwd=d, check=True) ## this is what actually tells the pipeline to run
     return d
 
 ##simple helper functions
