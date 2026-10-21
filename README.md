@@ -1,4 +1,4 @@
-   ![tests](https://github.com/AidanDavis47/airway-rnaseq-pipeline/actions/workflows/tests.yml/badge.svg)
+   ![tests](https://github.com/AidanDavis47/airway-rnaseq-pipeline/actions/workflows/tests.yaml/badge.svg)
 
 airway-rnaseq-pipeline
 
