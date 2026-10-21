@@ -1,3 +1,5 @@
+   ![tests](https://github.com/AidanDavis47/airway-rnaseq-pipeline/actions/workflows/tests.yml/badge.svg)
+
 airway-rnaseq-pipeline
 
 A reproducible Snakemake pipeline that takes raw RNA-seq reads from the public airway dataset (GEO GSE52778) through quality control, transcript quantification and differential expression analysis, to find which genes respond to the corticosteroid dexamethasone in human airway smooth muscle cells.
