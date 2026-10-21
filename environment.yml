@@ -4,15 +4,15 @@ channels:
   - bioconda
 dependencies:
   - python=3.11
-  - snakemake
-  - salmon
-  - fastqc
-  - multiqc
+  - snakemake=9.27.0
+  - salmon=2.8.0
+  - fastqc=0.12.1
+  - multiqc=1.35
   - sra-tools
   - seqtk
-  - r-base
-  - bioconductor-tximport
-  - bioconductor-deseq2
+  - r-base=4.5.3
+  - bioconductor-tximport=1.38.2
+  - bioconductor-deseq2=1.50.2
   - r-ggplot2
   - r-pheatmap
   - r-jsonlite

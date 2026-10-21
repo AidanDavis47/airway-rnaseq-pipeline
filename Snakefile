@@ -46,7 +46,7 @@ rule fastqc:
         "results/fastqc/{s}_{r}_fastqc.zip"
     log: "logs/fastqc/{s}_{r}.log" #create a log 
     shell:
-        "fastqc {input} -o results/fastqc &> {log}" #command that will br ran, taking the input an outputting to results
+        "fastqc {input} -outdir results/fastqc &> {log}" #command that will br ran, taking the input an outputting to results
 
 
 #this builds that actual index      
