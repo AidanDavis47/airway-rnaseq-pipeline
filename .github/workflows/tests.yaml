@@ -21,8 +21,9 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v4
         with:
           miniforge-version: latest
-          enviroment-file: enviroment.yml
-          activate-enviroment: airway
+          environment-file: environment.yml
+          activate-environment: airway
+          conda-remove-defaults: "true"
 
     ##print for debugging
       - name: Show tool versions
