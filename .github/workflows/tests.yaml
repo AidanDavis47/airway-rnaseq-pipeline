@@ -1,0 +1,35 @@
+##yaml file for running tests everytime there is a push or pull
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest ##create a linux machine
+
+    ##make sure that each step loads conda
+    defaults:
+      run:
+        shell: bash -el {0}
+
+    steps:
+    ##download repo
+      - uses: actions/checkout@v5
+
+    ##install conda and then build enviroment
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          enviroment-file: enviroment.yml
+          activate-enviroment: airway
+
+    ##print for debugging
+      - name: Show tool versions
+        run: |
+          snakemake --version
+          salmon --version
+    
+    ##run the actual tests
+      - name: Run tests
+        run: pytest -v tests/
