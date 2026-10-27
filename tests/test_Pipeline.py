@@ -53,5 +53,8 @@ def test_FKBP5Increase(run_pipeline):
     row = next(r for r in get_results(run_pipeline) if r["symbol"] == "FKBP5")
     assert float(row["log2FoldChange"]) > 1 ##checking to see if the change has increased, 1 would mean there was not increase i think, would that mean less than 1 would mean a decrease?
 
-    
+##Test 5 make sure the pca plot is working as expected
+def test_PCAPlot(run_pipeline):
+    plot = run_pipeline / "results/plots/pca.png"
+    assert plot.exists() and plot.stat().st_size > 0 ##check to see if plot exists and holds data
 

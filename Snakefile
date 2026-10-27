@@ -24,7 +24,8 @@ rule all:
     input:
         expand("results/salmon/{s}/quant.sf", s=SAMPLES),
         "results/multiqc/multiqc_report.html", ##we want the reports file
-        "results/deseq2/deseq2_results.csv" ## the results csv from the deseq2 rule on line 95
+        "results/deseq2/deseq2_results.csv", ## the results csv from the deseq2 rule on line 95
+        "results/plots/pca.png" ## want the pca plot
         
         
 #downloads the reads       
@@ -105,3 +106,12 @@ rule deseq2:
         min_samples = config["min_samples"] ##minimum amount of samples that are needed, gets it from the config file, added these during the testing phase
     log: "logs/deseq2.log" ##create a log
     script: "scripts/deseq2.R" ##will run this r file, turns out this must be an uppercase r to run
+
+##rule for the pca plot
+rule pca_plot:
+    input:
+        dds = "results/deseq2/dds.rds" ##get the deseq object
+    output:
+        pca = "results/plots/pca.png" ##output the pca as a png
+    log: "logs/pca_plot.log"
+    script: "scripts/plot_pca.R"
