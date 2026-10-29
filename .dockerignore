@@ -1,0 +1,8 @@
+data/
+results/
+ref/
+.snakemake/
+.git/
+__pycache__/
+.pytest_cache/
+tmp_testdata/
