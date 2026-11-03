@@ -58,3 +58,8 @@ def test_PCAPlot(run_pipeline):
     plot = run_pipeline / "results/plots/pca.png"
     assert plot.exists() and plot.stat().st_size > 0 ##check to see if plot exists and holds data
 
+##test 6 make sure that both the volcano and heatmap plot work
+def test_VolHeatPlots(run_pipeline):
+    for name in ("volcano.png", "heatmap.png"):
+        plot = run_pipeline / "results/plots" / name
+        assert plot.exists() and plot.stat().st_size > 0, f"missing {name}" ##make sure the plots exist and have data

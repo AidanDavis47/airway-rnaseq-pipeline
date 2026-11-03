@@ -25,7 +25,9 @@ rule all:
         expand("results/salmon/{s}/quant.sf", s=SAMPLES),
         "results/multiqc/multiqc_report.html", ##we want the reports file
         "results/deseq2/deseq2_results.csv", ## the results csv from the deseq2 rule on line 95
-        "results/plots/pca.png" ## want the pca plot
+        "results/plots/pca.png", ## want the pca plot
+        "results/plots/volcano.png", ## want the volcano plot
+        "results/plots/heatmap.png" ##want the heatmap
         
         
 #downloads the reads       
@@ -115,3 +117,27 @@ rule pca_plot:
         pca = "results/plots/pca.png" ##output the pca as a png
     log: "logs/pca_plot.log"
     script: "scripts/plot_pca.R"
+
+##rule for the volcano plot
+rule volcano_plot:
+    input:
+        results = "results/deseq2/deseq2_results.csv" ##pulls data from the results table
+    output:
+        volcano = "results/plots/volcano.png" ##save the plot in the plots folder in results as a png
+    params:
+        padj = config.get("padj_cutoff", 0.05), ##cutoff for significance
+        lfc = config.get("lfc_cutoff", 1) ##cut off for fold change, 1 is a 2x change
+    log: "logs/volcano_plot.log"
+    script: "scripts/plot_volcano.R"
+
+##rule for the heatmap
+rule heatmap_plot:
+    input:
+        results = "results/deseq2/deseq2_results.csv", ##pulls data from the results table
+        dds = "results/deseq2/dds.rds" ##get the deseq object
+    output:
+        heatmap = "results/plots/heatmap.png" ##save the heatmap in the plots folder in results as a png
+    params:
+        top_genes = config.get("top_genes", 30) ##get the top genes for the heat map
+    log: "logs/heatmap_plot.log"
+    script: "scripts/plot_heatmap.R"

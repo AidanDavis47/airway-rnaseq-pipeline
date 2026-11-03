@@ -7,3 +7,4 @@ salmon_index: ref/salmon_index ##gets the info from the salmon folder in referen
 threads: 4 ## determines how many threads are being used
 min_counts: 10
 min_samples: 4
+lfc_cutoff: 1 ##fold change cutoff

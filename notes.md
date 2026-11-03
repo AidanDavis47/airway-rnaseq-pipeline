@@ -85,7 +85,7 @@ runs via command line
 activate enviro:  conda activate "enviro name"
 
 dry run: snakemake -n
-wet run: snake make --cores 4  ##the 4 is number of cores can change this number to increase or decrease
+wet run: snakemake --cores 4  ##the 4 is number of cores can change this number to increase or decrease
 
 
 
@@ -110,3 +110,8 @@ week 2  results
 133.558043020709,2.56354574967766,0.260931431355489,9.824595436282,8.82275654820046e-23,3.48823932579378e-20,"ENSG00000103196.12","CRISPLD2"
 
 this matches the studies results (“RNA-Seq Transcriptome Profiling Identifies CRISPLD2 as a Glucocorticoid Responsive Gene that Modulates Cytokine Function in Airway Smooth Muscle Cells,” published in PLoS ONE in 2014 (DOI: 10.1371/journal.pone.0099625).)
+
+
+
+Week 4 results:
+ Dexamethasone induced a strong, mostly upregulating transcriptional response. Unsupervised clustering of the top 30 genes separated all treated from untreated samples, and known glucocorticoid-response genes (FKBP5, TSC22D3, DUSP1) clustered together with CRISPLD2, the key gene identified in the original study.
