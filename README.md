@@ -2,7 +2,70 @@
 
 airway-rnaseq-pipeline
 
+project for resume and to learn snakemake and get exprience with it, used claude for help on the project and learning snakemake.
+
 A reproducible Snakemake pipeline that takes raw RNA-seq reads from the public airway dataset (GEO GSE52778) through quality control, transcript quantification and differential expression analysis, to find which genes respond to the corticosteroid dexamethasone in human airway smooth muscle cells.
+
+
+
+How to run:
+1. download code and reference
+      git clone https://github.com/AidanDavis47/airway-rnaseq-pipeline.git
+      cd airway-rnaseq-pipeline
+      mkdir -p ref
+      wget -p ref https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_48/gencode.v48.transcripts.fa.gz
+
+2. run with either conda or docker
+   Conda:
+      mamba env create -f environment.yml
+      conda activate airway
+      snakemake -n 
+      snakemake --cores 4
+   Docker:
+      docker build -t airway-rnaseq .
+      docker run --rm --user $(id -u):$(id -g) -e HOME=/tmp -v "$PWD":/pipeline airway-rnaseq snakemake --cores 4
+
+3. Testing:
+      pytest -v tests/
+
+
+Folder and File Structure:
+Snakefile (the pipeline rules)
+config.yaml (settings)
+samples.csv (sample sheet, has donors and treatments)
+environment.yml (conda environment)
+Dockerfile (for docker)
+scripts/ (holds scripts for DESeq2, plots and creating test data for the test)
+tests/ (holds the pytests and a small test data set)
+figures/ (figures for the readme)
+
+
+Goal of project:
+What genes do Glucoccorticoids switch off and on in airway muscle cells?
+
+Data is from GEO GSE52778, airway smooth muscle cells from 4 donors, each untreated and treated with dexamethasone (8 paired-end samples). The study's albuterol samples are not used.
+
+Results:
+
+Variation is caused by if the samples are treated or untreated.
+
+PC1, which has 29% variance, seperates the treated and untreated samples cleanly. PC2, which has 19% variance, shows differences between donors. (see pca plot)
+
+Dexamethason is found to mainly turn genes on. This is consistant with dexamethasone's mechanism of activating genes via the glucocorticoid receptor. (see volcano plot)
+
+
+Refernce for data and comparing results:
+Himes BE, et al. (2014). RNA-Seq transcriptome profiling identifies CRISPLD2 as a glucocorticoid responsive gene that modulates cytokine function in airway smooth muscle cells. PLoS ONE 9(6): e99625. https://doi.org/10.1371/journal.pone.0099625
+
+
+
+
+
+
+
+
+-----NOTES MADE WHILE WORKING OF PROJECT-----
+
 
 Key result
 
@@ -70,9 +133,9 @@ results/deseq2/deseq2_results.csv	Gene-level results with log2 fold change, p-va
 results/deseq2/dds.rds	Saved DESeq2 object for further analysis in R
 logs/	Log file for each step
 
-Work in progress
-Automated tests: scripts/createTestData.py builds a small dataset (about 200 genes, including known glucocorticoid-responsive genes such as FKBP5, TSC22D3, PER1, DUSP1 and CRISPLD2) so the pipeline can be tested quickly with pytest.
-Plots: adding a PCA plot and a volcano plot of the DESeq2 results.
-Data source
+
 
 Himes BE et al. (2014), GEO accession GSE52778. Reference transcriptome from GENCODE release 48.
+
+
+
